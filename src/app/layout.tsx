@@ -20,10 +20,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-zinc-900 text-zinc-50`}>
-        <div className="flex">
+        <div className="flex max-h-screen">
           <HeroesProvider>
             <Sidebar />
-            <main className="ml-44 w-4/6">{children}</main>
+            <main className="ml-44 w-4/6 overflow-y-auto [&::-webkit-scrollbar]:hidden">
+              {children}
+            </main>
             <SearchHero />
           </HeroesProvider>
         </div>
