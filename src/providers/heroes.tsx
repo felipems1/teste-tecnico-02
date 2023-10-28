@@ -3,17 +3,14 @@
 import { api } from '@/utils/api'
 import { HeroType } from '@/types/hero'
 import axios from 'axios'
-import {
-  createContext,
-  ReactNode,
-  useEffect,
-  useState,
-  useCallback,
-} from 'react'
+import { createContext, ReactNode, useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
 interface IHeroesContext {
-  heroes: HeroType[]
+  heroes: HeroType[] | undefined
   filter: string
+  isLoading: boolean
+  error: Error | null
   showModal: boolean
   heroOneSelected: HeroType | null
   heroTwoSelected: HeroType | null
@@ -27,9 +24,7 @@ interface IHeroesContext {
 export const HeroesContext = createContext<IHeroesContext>({} as IHeroesContext)
 
 export const HeroesProvider = ({ children }: { children: ReactNode }) => {
-  const [responseHeroes, setResponseHeroes] = useState<HeroType[]>([])
   const [filter, setFilter] = useState('')
-
   const [showModal, setShowModal] = useState(false)
 
   const [heroOneSelected, setHeroOneSelected] = useState<HeroType | null>(null)
@@ -70,27 +65,24 @@ export const HeroesProvider = ({ children }: { children: ReactNode }) => {
     }
   }
 
-  const fetchHeroes = useCallback(async () => {
-    try {
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['heroes'],
+    queryFn: async (): Promise<HeroType[]> => {
       const response = await axios.get(api)
-      setResponseHeroes(response.data)
-    } catch (error) {
-      console.error('Ocorreu um erro na requisição:', error)
-    }
-  }, [])
+      return response.data
+    },
+  })
 
-  const heroes = responseHeroes.filter((hero) =>
+  const heroes = data?.filter((hero) =>
     hero.name.toLowerCase().includes(filter.toLowerCase()),
   )
-
-  useEffect(() => {
-    fetchHeroes()
-  }, [fetchHeroes])
 
   return (
     <HeroesContext.Provider
       value={{
         heroes,
+        isLoading,
+        error,
         filter,
         showModal,
         heroOneSelected,

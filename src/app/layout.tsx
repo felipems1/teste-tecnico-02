@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Sidebar } from '@/components/ui/sidebar'
 import { HeroesProvider } from '@/providers/heroes'
-import { SearchHero } from '../components/ui/search-hero'
+import { ReactQueryProvider } from '@/providers/react-query'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,13 +21,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} bg-zinc-900 text-zinc-50`}>
         <div className="flex max-h-screen">
-          <HeroesProvider>
-            <Sidebar />
-            <main className="ml-44 w-4/6 overflow-y-auto [&::-webkit-scrollbar]:hidden">
-              {children}
-            </main>
-            <SearchHero />
-          </HeroesProvider>
+          <ReactQueryProvider>
+            <HeroesProvider>
+              <Sidebar />
+              <main className="ml-44 w-4/6 overflow-y-auto [&::-webkit-scrollbar]:hidden">
+                {children}
+              </main>
+            </HeroesProvider>
+          </ReactQueryProvider>
         </div>
       </body>
     </html>

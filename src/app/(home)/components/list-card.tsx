@@ -9,9 +9,7 @@ export function ListCard() {
 
   return (
     <div className="grid grid-cols-4 gap-12 px-6">
-      {heroes.map((hero) => (
-        <Card key={hero.id} hero={hero} />
-      ))}
+      {heroes?.map((hero) => <Card key={hero.id} hero={hero} />)}
     </div>
   )
 }
