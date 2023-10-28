@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { Sidebar } from '@/components/ui/sidebar'
+import { HeroesProvider } from '@/providers/heroes'
+import { SearchHero } from '../components/ui/search-hero'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +19,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-zinc-900 text-zinc-50`}>
+        <div className="flex">
+          <HeroesProvider>
+            <Sidebar />
+            <main className="ml-44 w-4/6">{children}</main>
+            <SearchHero />
+          </HeroesProvider>
+        </div>
+      </body>
     </html>
   )
 }

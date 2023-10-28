@@ -1,6 +1,6 @@
 'use client'
 
-import { api } from '@/helpers/api'
+import { api } from '@/utils/api'
 import { HeroType } from '@/types/hero'
 import axios from 'axios'
 import {
