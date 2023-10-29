@@ -26,8 +26,11 @@ export function Card({ hero }: CardProps) {
       <Image
         src={hero.images.sm}
         alt={hero.name}
-        width={0}
-        height={0}
+        width={100}
+        height={200}
+        loading="lazy"
+        placeholder="blur"
+        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPUqwcAAOEArzGi5DEAAAAASUVORK5CYII="
         sizes="100vw"
         className="h-auto max-h-[70%] w-auto max-w-[80%] shadow-lg shadow-blue-500 rounded-md object-contain"
       />
