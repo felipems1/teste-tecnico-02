@@ -24,7 +24,7 @@ export default function Home() {
   }
 
   return (
-    <div className="w-full overflow-hidden py-10 px-3 gap-2">
+    <div className="w-full overflow-hidden py-10 px-3">
       <WinningHeroModal />
       <SearchHero />
       <ListCard />

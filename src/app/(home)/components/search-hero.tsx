@@ -13,8 +13,8 @@ export function SearchHero() {
   }
 
   return (
-    <div className="fixed right-0 bottom-0 top-0 flex-1 py-10 px-3">
-      <div className="border-blue-500 border-2 rounded-xl bg-zinc-900 p-2 flex gap-2 w-full">
+    <div className="fixed right-0 bottom-0 top-0 py-10">
+      <div className="border-blue-500 border-2 rounded-xl bg-zinc-900 p-2 flex gap-2 w-full max-w-[95%]">
         <Search />
         <input
           type="text"
