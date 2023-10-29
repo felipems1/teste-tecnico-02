@@ -13,16 +13,14 @@ export function SearchHero() {
   }
 
   return (
-    <div className="fixed right-0 bottom-0 top-0 py-10">
-      <div className="border-blue-500 border-2 rounded-xl bg-zinc-900 p-2 flex gap-2 w-full max-w-[95%]">
-        <Search />
-        <input
-          type="text"
-          value={filter}
-          onChange={handleSearchHero}
-          className="bg-zinc-900 outline-none max-w-[80%]"
-        />
-      </div>
+    <div className="border-blue-500 border-2 rounded-xl bg-zinc-900 p-2 flex items-center gap-2 fixed right-4 top-10 max-w-[220px]">
+      <Search />
+      <input
+        type="text"
+        value={filter}
+        onChange={handleSearchHero}
+        className="bg-zinc-900 outline-none max-w-[50%]"
+      />
     </div>
   )
 }

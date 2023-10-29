@@ -20,19 +20,19 @@ export function Card({ hero }: CardProps) {
 
   return (
     <div
-      className="flex flex-col items-center gap-2 p-2 bg-zinc-800 rounded-md text-center border-2 border-blue-500 shadow-lg	shadow-blue-500"
+      className="flex flex-col items-center gap-2 p-2 bg-zinc-800 rounded-md text-center border-2 border-blue-500 shadow-lg	shadow-blue-500 max-w-[130px]"
       onClick={() => handleSelectedHero(hero)}
     >
       <Image
         src={hero.images.sm}
         alt={hero.name}
-        width={100}
-        height={200}
+        width={120}
+        height={150}
         loading="lazy"
         placeholder="blur"
+        quality={100}
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPUqwcAAOEArzGi5DEAAAAASUVORK5CYII="
-        sizes="100vw"
-        className="h-auto max-h-[70%] w-auto max-w-[80%] shadow-lg shadow-blue-500 rounded-md object-contain"
+        className="max-w-[100%] h-auto shadow-lg shadow-blue-500 rounded-md object-contain"
       />
       <h3 className="font-bold text-lg">{hero.name}</h3>
       <span className="font-semibold">{powerstats}</span>

@@ -57,7 +57,7 @@ export function WinningHeroModal() {
               sizes="100vw"
               className="h-auto max-h-[50%] w-auto max-w-[50%] shadow-lg shadow-blue-500 rounded-md object-contain"
             />
-            <h2 className="text-2xl uppercase font-bold">
+            <h2 className="text-sm uppercase font-bold md:text-2xl text-center">
               {heroOneSelected?.name}
             </h2>
           </div>
@@ -92,7 +92,7 @@ export function WinningHeroModal() {
               sizes="100vw"
               className="h-auto max-h-[50%] w-auto max-w-[50%] shadow-lg shadow-blue-500 rounded-md object-contain"
             />
-            <h2 className="text-2xl uppercase font-bold">
+            <h2 className="text-sm uppercase font-bold md:text-2xl text-center">
               {heroTwoSelected?.name}
             </h2>
           </div>

@@ -19,8 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-zinc-900 text-zinc-50`}>
-        <div className="flex max-h-screen">
+      <body
+        className={`${inter.className} bg-zinc-900 text-zinc-50 [&::-webkit-scrollbar]:hidden`}
+      >
+        <div className="flex">
           <ReactQueryProvider>
             <HeroesProvider>
               <Sidebar />
