@@ -47,17 +47,17 @@ export function WinningHeroModal() {
           </DialogTitle>
           <DialogClose asChild={showModal} />
         </DialogHeader>
-        <div className="flex justify-between items-center gap-5">
-          <div className="flex flex-col gap-5 justify-center items-center">
+        <div className="flex items-center justify-between gap-5">
+          <div className="flex flex-col items-center justify-center gap-5">
             <Image
               src={heroOneSelected?.images.lg || ''}
               alt={heroOneSelected?.name || ''}
               width={0}
               height={0}
               sizes="100vw"
-              className="h-auto max-h-[50%] w-auto max-w-[50%] shadow-lg shadow-blue-500 rounded-md object-contain"
+              className="h-auto max-h-[50%] w-auto max-w-[50%] rounded-md object-contain shadow-lg shadow-blue-500"
             />
-            <h2 className="text-sm uppercase font-bold md:text-2xl text-center">
+            <h2 className="text-center text-sm font-bold uppercase md:text-2xl">
               {heroOneSelected?.name}
             </h2>
           </div>
@@ -83,16 +83,16 @@ export function WinningHeroModal() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-5 justify-center items-center">
+          <div className="flex flex-col items-center justify-center gap-5">
             <Image
               src={heroTwoSelected?.images.lg || ''}
               alt={heroTwoSelected?.name || ''}
               width={0}
               height={0}
               sizes="100vw"
-              className="h-auto max-h-[50%] w-auto max-w-[50%] shadow-lg shadow-blue-500 rounded-md object-contain"
+              className="h-auto max-h-[50%] w-auto max-w-[50%] rounded-md object-contain shadow-lg shadow-blue-500"
             />
-            <h2 className="text-sm uppercase font-bold md:text-2xl text-center">
+            <h2 className="text-center text-sm font-bold uppercase md:text-2xl">
               {heroTwoSelected?.name}
             </h2>
           </div>

@@ -20,7 +20,7 @@ export function Card({ hero }: CardProps) {
 
   return (
     <div
-      className="flex flex-col items-center gap-2 p-2 bg-zinc-800 rounded-md text-center border-2 border-blue-500 shadow-lg	shadow-blue-500 max-w-[130px]"
+      className="flex max-w-[130px] flex-col items-center gap-2 rounded-md border-2 border-blue-500 bg-zinc-800 p-2 text-center	shadow-lg shadow-blue-500"
       onClick={() => handleSelectedHero(hero)}
     >
       <Image
@@ -32,9 +32,9 @@ export function Card({ hero }: CardProps) {
         placeholder="blur"
         quality={100}
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mPUqwcAAOEArzGi5DEAAAAASUVORK5CYII="
-        className="max-w-[100%] h-auto shadow-lg shadow-blue-500 rounded-md object-contain"
+        className="h-auto max-w-[100%] rounded-md object-contain shadow-lg shadow-blue-500"
       />
-      <h3 className="font-bold text-lg">{hero.name}</h3>
+      <h3 className="text-lg font-bold">{hero.name}</h3>
       <span className="font-semibold">{powerstats}</span>
     </div>
   )

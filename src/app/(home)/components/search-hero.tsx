@@ -13,13 +13,13 @@ export function SearchHero() {
   }
 
   return (
-    <div className="border-blue-500 border-2 rounded-xl bg-zinc-900 p-2 flex items-center gap-2 fixed right-4 top-10 max-w-[220px]">
+    <div className="fixed right-4 top-10 flex max-w-[220px] items-center gap-2 rounded-xl border-2 border-blue-500 bg-zinc-900 p-2">
       <Search />
       <input
         type="text"
         value={filter}
         onChange={handleSearchHero}
-        className="bg-zinc-900 outline-none max-w-[50%]"
+        className="max-w-[50%] bg-zinc-900 outline-none"
       />
     </div>
   )
