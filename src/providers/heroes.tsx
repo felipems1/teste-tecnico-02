@@ -15,12 +15,14 @@ interface IHeroesContext {
   showModal: boolean
   heroOneSelected: HeroType | null
   heroTwoSelected: HeroType | null
-  handleFilterChange: (value: string) => void
+  filterChange: (value: string) => void
   setFilter: (filter: string) => void
   setShowModal: (showModal: boolean) => void
   selectedHero: (hero: HeroType) => void
   calculateTotalPowerstats: (hero: HeroType | null) => number
   resultWinner: (heroOne: HeroType, heroTwo: HeroType) => string
+  setHeroOneSelected: (newValue: null) => void
+  setHeroTwoSelected: (newValue: null) => void
 }
 
 export const HeroesContext = createContext<IHeroesContext>({} as IHeroesContext)
@@ -78,7 +80,7 @@ export const HeroesProvider = ({ children }: { children: ReactNode }) => {
     },
   })
 
-  const handleFilterChange = debounce((value: string) => {
+  const filterChange = debounce((value: string) => {
     const filtered =
       data?.filter((hero) =>
         hero.name.toLowerCase().includes(value.toLowerCase()),
@@ -96,7 +98,9 @@ export const HeroesProvider = ({ children }: { children: ReactNode }) => {
         showModal,
         heroOneSelected,
         heroTwoSelected,
-        handleFilterChange,
+        filterChange,
+        setHeroOneSelected,
+        setHeroTwoSelected,
         calculateTotalPowerstats,
         resultWinner,
         setShowModal,

@@ -9,24 +9,34 @@ import {
 } from '@/components/ui/dialog'
 import { HeroesContext } from '@/providers/heroes'
 import Image from 'next/image'
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect, useMemo } from 'react'
 
 export function WinningHeroModal() {
   const [heroWinner, setHeroWinner] = useState('')
 
   const {
-    showModal,
     setShowModal,
+    resultWinner,
+    showModal,
     heroOneSelected,
     heroTwoSelected,
-    resultWinner,
+    setHeroOneSelected,
+    setHeroTwoSelected,
   } = useContext(HeroesContext)
 
-  useEffect(() => {
+  useMemo(() => {
     if (heroOneSelected !== null && heroTwoSelected !== null) {
-      setHeroWinner(resultWinner(heroOneSelected, heroTwoSelected))
+      const winner = resultWinner(heroOneSelected, heroTwoSelected)
+      setHeroWinner(winner)
     }
   }, [heroOneSelected, heroTwoSelected, resultWinner])
+
+  useEffect(() => {
+    if (!showModal) {
+      setHeroOneSelected(null)
+      setHeroTwoSelected(null)
+    }
+  }, [showModal, setHeroOneSelected, setHeroTwoSelected])
 
   return (
     <Dialog open={showModal} onOpenChange={setShowModal}>
