@@ -5,10 +5,11 @@ import { Search } from 'lucide-react'
 import { useContext, ChangeEvent } from 'react'
 
 export function SearchHero() {
-  const { filter, setFilter } = useContext(HeroesContext)
+  const { filter, setFilter, handleFilterChange } = useContext(HeroesContext)
 
   function handleSearchHero(event: ChangeEvent<HTMLInputElement>) {
     setFilter(event.target.value)
+    handleFilterChange(event.target.value)
   }
 
   return (

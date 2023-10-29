@@ -5,6 +5,7 @@ import { HeroType } from '@/types/hero'
 import axios from 'axios'
 import { createContext, ReactNode, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { debounce } from 'debounce'
 
 interface IHeroesContext {
   heroes: HeroType[] | undefined
@@ -14,6 +15,7 @@ interface IHeroesContext {
   showModal: boolean
   heroOneSelected: HeroType | null
   heroTwoSelected: HeroType | null
+  handleFilterChange: (value: string) => void
   setFilter: (filter: string) => void
   setShowModal: (showModal: boolean) => void
   selectedHero: (hero: HeroType) => void
@@ -25,6 +27,8 @@ export const HeroesContext = createContext<IHeroesContext>({} as IHeroesContext)
 
 export const HeroesProvider = ({ children }: { children: ReactNode }) => {
   const [filter, setFilter] = useState('')
+  const [heroes, setHeroes] = useState<HeroType[]>([])
+
   const [showModal, setShowModal] = useState(false)
 
   const [heroOneSelected, setHeroOneSelected] = useState<HeroType | null>(null)
@@ -69,13 +73,18 @@ export const HeroesProvider = ({ children }: { children: ReactNode }) => {
     queryKey: ['heroes'],
     queryFn: async (): Promise<HeroType[]> => {
       const response = await axios.get(api)
+      setHeroes(response.data)
       return response.data
     },
   })
 
-  const heroes = data?.filter((hero) =>
-    hero.name.toLowerCase().includes(filter.toLowerCase()),
-  )
+  const handleFilterChange = debounce((value: string) => {
+    const filtered =
+      data?.filter((hero) =>
+        hero.name.toLowerCase().includes(value.toLowerCase()),
+      ) || []
+    setHeroes(filtered)
+  }, 1000) // 1s de atraso
 
   return (
     <HeroesContext.Provider
@@ -87,6 +96,7 @@ export const HeroesProvider = ({ children }: { children: ReactNode }) => {
         showModal,
         heroOneSelected,
         heroTwoSelected,
+        handleFilterChange,
         calculateTotalPowerstats,
         resultWinner,
         setShowModal,

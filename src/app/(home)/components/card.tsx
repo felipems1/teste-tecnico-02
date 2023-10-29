@@ -14,7 +14,7 @@ export function Card({ hero }: CardProps) {
 
   const powerstats = calculateTotalPowerstats(hero)
 
-  const handleSelectedHero = (hero: HeroType) => {
+  function handleSelectedHero(hero: HeroType) {
     selectedHero(hero)
   }
 
