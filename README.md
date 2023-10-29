@@ -40,7 +40,7 @@ $ git clone https://github.com/felipems1/teste-tecnico-02.git
 $ yarn install / npm install
 
 3. Inicie a aplicação em modo de desenvolvimento:
-$ yarn start / npm start
+$ yarn dev / npm run dev
 
 4. O servidor será aberto em http://localhost:3000
 ```
