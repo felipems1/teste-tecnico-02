@@ -1,4 +1,4 @@
-# Teste técnico
+<h1 align="center"> Teste Técnico </h1>
 
 <div align="center">
   <img src="./public/preview.png" alt="demonstração do projeto" >
@@ -13,7 +13,7 @@ informando o ganhador. Vence aquele com maior somatório de powerstats.
 
 ## 2 - Tecnologias
 
-Um pouco das tecnologias que foram utilizadas no projeto: 
+Um pouco das tecnologias que foram utilizadas no projeto:
 
 - React.Js
 - Next.Js
